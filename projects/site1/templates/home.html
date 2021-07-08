@@ -1,0 +1,32 @@
+<html>
+<head>
+  <title>dma</title>
+</head>
+
+<body bgcolor="#B2BEB5">
+
+<h1 align='center'>Project Website Alpha</h1>
+<h4 align='center'>From sbbaray</h4>
+<table align="center">
+    <tr>
+        <td>
+            <img src="https://dma-bd.com/wp-content/uploads/2019/11/DMA.gif">
+        </td>
+</table>
+<p align='center'>Links:
+{% if user.is_authenticated %}
+Logged in as <b>{{user.username}}</b> <br>
+Visit: <a href="http://bidhanbaray.pythonanywhere.com/patient_view">Patient Data</a> <br>
+<a href="http://bidhanbaray.pythonanywhere.com/doctor_view">Doctor Data</a> <br>
+Or <a href="http://bidhanbaray.pythonanywhere.com/patient_view/logout">Logout</a> <br>
+{% else %}
+<a href="http://bidhanbaray.pythonanywhere.com/patient_view/login">Log in as patient</a><br>
+<a href="http://bidhanbaray.pythonanywhere.com/doctor_view/login">Log in as doctor</a><br>
+{% endif %}
+#Info<br>
+audio_file post at: https://bidhanbaray.pythonanywhere.com/audio_file/upload/ <br>
+user_data post at: https://bidhanbaray.pythonanywhere.com/user_data/api/<br>
+
+
+</body>
+</html>

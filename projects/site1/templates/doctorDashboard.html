@@ -1,0 +1,49 @@
+<html>
+<head>
+    <title>Doctor Dashboard</title>
+</head>
+
+<body>
+<h2 align="center"> Doctor Dashboard</h2>
+<table align='center' border='2' cellspacing="0" cellpadding="10">
+    <tr>
+        <th>Patients</th>
+        <th>Action</th>
+    <tr>
+    {% for patient in patient_list %}
+    <tr>
+        <td>{{patient.patient_id}}</td>
+        <td>
+            <a href="{{request.path}}/{{patient.patient_id}}">View</a>
+        </td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+<br>
+<br>
+<div style="display: block; text-align: center;">
+    <h3> Add patient </h3><br>
+    <form action="add_patient" method="post">
+        {% csrf_token %}
+        Patient ID: <input type="text" name="patient_id"><br>
+        Approval Key: <input type="text" name="approval_key"><br>
+        <input type="submit">
+    </form>
+    <div>
+        {% for message in messages %}
+        <h3>{{message}}</h3>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+<p align="center">
+<a href="http://bidhanbaray.pythonanywhere.com/doctor_view/logout">Logout</a><br>
+<a href="http://bidhanbaray.pythonanywhere.com/">Home</a>
+</p>
+
+</body>
+</html>
