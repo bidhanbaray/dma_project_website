@@ -1,26 +1,53 @@
 <html>
 <head>
     <title>Doctor Dashboard</title>
+    <style>
+        body {
+        font-family: 'Trebuchet MS', sans-serif;
+        }
+        li {list-style-position: inside;}
+    </style>
 </head>
 
-<body>
+<body bgcolor="#B2BEB5">
+    <nav align="right">
+        {% if user.is_authenticated %}
+            Logged in as <b>{{user.username}}</b> |
+            <a href="http://bidhanbaray.pythonanywhere.com/">Home</a> |
+            <a href="http://bidhanbaray.pythonanywhere.com/patient_view/logout">Logout</a> |
+        {% else %}
+            <a href="http://bidhanbaray.pythonanywhere.com/patient_view/login">Log in as patient</a> |
+            <a href="http://bidhanbaray.pythonanywhere.com/doctor_view/login">Log in as doctor</a> |
+        {% endif %}
+    </nav>
 <h2 align="center"> Doctor Dashboard</h2>
 <h3 align="center">Welcome, {{request.user.username}}</h3>
-<table align='center' border='2' cellspacing="0" cellpadding="10">
-    <tr>
-        <th>Patients</th>
-        <th>Action</th>
-    <tr>
-    {% for patient in patient_list %}
-    <tr>
-        <td>{{patient.patient_id}}</td>
-        <td>
-            <a href="{{request.path}}/{{patient.patient_id}}">View</a>
-        </td>
-    </tr>
-    {% endfor %}
+<table align="center">
 
+    <h3 align="center">Patient List:</h3>
+    <tr><td>
+    <ol>
+    {% for patient in patient_list %}
+    <li> <a href="{{request.path}}/{{patient.patient_id}}">{{patient.patient_id}}</a>
+    {% endfor %}
+    </ol>
+    </tr></td>
 </table>
+<!--<table align='center' border='2' cellspacing="0" cellpadding="10">-->
+<!--    <tr>-->
+<!--        <th>Patients</th>-->
+<!--        <th>Action</th>-->
+<!--    <tr>-->
+<!--    {% for patient in patient_list %}-->
+<!--    <tr>-->
+<!--        <td>{{patient.patient_id}}</td>-->
+<!--        <td>-->
+<!--            <a href="{{request.path}}/{{patient.patient_id}}">View</a>-->
+<!--        </td>-->
+<!--    </tr>-->
+<!--    {% endfor %}-->
+
+<!--</table>-->
 
 <br>
 <br>
@@ -41,10 +68,10 @@
 
 
 
-<p align="center">
-<a href="http://bidhanbaray.pythonanywhere.com/doctor_view/logout">Logout</a><br>
-<a href="http://bidhanbaray.pythonanywhere.com/">Home</a>
-</p>
+<!--<p align="center">-->
+<!--<a href="http://bidhanbaray.pythonanywhere.com/doctor_view/logout">Logout</a><br>-->
+<!--<a href="http://bidhanbaray.pythonanywhere.com/">Home</a>-->
+<!--</p>-->
 
 </body>
 </html>

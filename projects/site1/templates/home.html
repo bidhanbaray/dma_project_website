@@ -1,32 +1,55 @@
 <html>
 <head>
   <title>dma</title>
+  <style>
+    body {
+    font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    </style>
 </head>
 
 <body bgcolor="#B2BEB5">
-<h4 align='center'>Welcome to the website of</h4>
-<h1 align='center'>IoT Health Tracker System</h1>
 
-<table align="center">
-    <tr>
-        <td>
-            <img src="https://dma-bd.com/wp-content/uploads/2019/11/DMA.gif">
-        </td>
-</table>
-<p align='center'>Links:
-{% if user.is_authenticated %}
-Logged in as <b>{{user.username}}</b> <br>
-Visit: <a href="http://bidhanbaray.pythonanywhere.com/patient_view">Patient Data</a> <br>
-<a href="http://bidhanbaray.pythonanywhere.com/doctor_view">Doctor Data</a> <br>
-Or <a href="http://bidhanbaray.pythonanywhere.com/patient_view/logout">Logout</a> <br>
-{% else %}
-<a href="http://bidhanbaray.pythonanywhere.com/patient_view/login">Log in as patient</a><br>
-<a href="http://bidhanbaray.pythonanywhere.com/doctor_view/login">Log in as doctor</a><br>
-{% endif %}
-#Info<br>
+    <font face = >
+    <nav align="right">
+        {% if user.is_authenticated %}
+            Logged in as <b>{{user.username}}</b> |
+            {% if is_patient %}
+                <a href="http://bidhanbaray.pythonanywhere.com/patient_view">Patient Data</a> |
+            {% else %}
+                <a href="http://bidhanbaray.pythonanywhere.com/doctor_view">Doctor Data</a> |
+            {% endif %}
+            <a href="http://bidhanbaray.pythonanywhere.com/patient_view/logout">Logout</a> |
+        {% else %}
+            <a href="http://bidhanbaray.pythonanywhere.com/patient_view/login">Log in as patient</a> |
+            <a href="http://bidhanbaray.pythonanywhere.com/doctor_view/login">Log in as doctor</a> |
+        {% endif %}
+    </nav>
+    <h4 align='center'>Welcome to the website of</h4>
+    <h1 align='center'>IoT Health Tracker System</h1>
+
+    <table align="center">
+        <tr>
+            <td>
+                <img src="https://dma-bd.com/wp-content/uploads/2019/11/DMA.gif">
+            </td>
+        </tr>
+    </table>
+<!--<p align='center'>-->
+<!--{% if user.is_authenticated %}-->
+<!--Logged in as <b>{{user.username}}</b> <br>-->
+<!--Visit: <a href="http://bidhanbaray.pythonanywhere.com/patient_view">Patient Data</a> <br>-->
+<!--<a href="http://bidhanbaray.pythonanywhere.com/doctor_view">Doctor Data</a> <br>-->
+<!--Or <a href="http://bidhanbaray.pythonanywhere.com/patient_view/logout">Logout</a> <br>-->
+<!--{% else %}-->
+<!--<a href="http://bidhanbaray.pythonanywhere.com/patient_view/login">Log in as patient</a><br>-->
+<!--<a href="http://bidhanbaray.pythonanywhere.com/doctor_view/login">Log in as doctor</a><br>-->
+<!--{% endif %}-->
+<!-- #Info<br>
 audio_file post at: https://bidhanbaray.pythonanywhere.com/audio_file/upload/ <br>
-user_data post at: https://bidhanbaray.pythonanywhere.com/user_data/api/<br>
-
+user_data post at: https://bidhanbaray.pythonanywhere.com/user_data/api/<br> -->
+<p align='center'>&copy;dma-bd 2021</p>
 
 </body>
 </html>

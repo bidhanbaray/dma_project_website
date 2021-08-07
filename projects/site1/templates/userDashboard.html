@@ -1,45 +1,66 @@
 <html>
 <head>
     <title>User Dashboard</title>
+    <style>
+        body {
+        font-family: 'Trebuchet MS', sans-serif;
+        }
+    </style>
 </head>
 
-<body>
+<body bgcolor="#B2BEB5">
 
+    <nav align="right">
+        {% if user.is_authenticated %}
+            Logged in as <b>{{user.username}}</b> |
+            <a href="http://bidhanbaray.pythonanywhere.com/">Home</a> |
+            <a href="http://bidhanbaray.pythonanywhere.com/patient_view/logout">Logout</a> |
+        {% else %}
+            <a href="http://bidhanbaray.pythonanywhere.com/patient_view/login">Log in as patient</a> |
+            <a href="http://bidhanbaray.pythonanywhere.com/doctor_view/login">Log in as doctor</a> |
+        {% endif %}
+    </nav>
 
 <h2 align='center'>Dashboard</h2>
 
-<h3 align='center'>for user: {{entries.first.device_id}}</h3>
+{% if entries %}
+<h3 align='center'>User: {{entries.first.device_id}}</h3>
 
 <br>
 <br>
 <table align='center' border='2' cellspacing="0">
     <tr>
-        <th>Device ID</th>
+        <!--<th>Device ID</th>-->
+        <th>time</th>
         <th>Temperature</th>
         <th>BP Systolic</th>
         <th>BP Diastolic</th>
         <th>Heart Rate</th>
         <th>spO2</th>
-        <th>time</th>
+
     <tr>
     {% for entry in entries %}
     <tr>
-        <td>{{entry.device_id}}</td>
+        <!--<td>{{entry.device_id}}</td>-->
+        <td>{{entry.timestamp}}</td>
         <td>{{entry.temp}}</td>
         <td>{{entry.bp_systolic}}</td>
         <td>{{entry.bp_diastolic}}</td>
         <td>{{entry.hr}}</td>
         <td>{{entry.spo2}}</td>
-        <td>{{entry.timestamp}}</td>
+
     </tr>
     {% endfor %}
 
 </table>
+{% else %}
+<h3 align="center">No data available</h3>
+{% endif %}
 {% if audio_entries %}
 <br> <p align="center">Audio Records:</p>
 <table align='center' border='2' cellspacing="0">
     <tr>
-        <th>Device ID</th>
+        <!--<th>Device ID</th>-->
         <th>Audio File</th>
         <th>time</th>
 
@@ -47,7 +68,7 @@
 
     {% for audio_entry in audio_entries %}
     <tr>
-        <td>{{audio_entry.device_id}}</td>
+        <!--<td>{{audio_entry.device_id}}</td>-->
         <td>
             <audio controls>
                 <source src="{{audio_entry.audio_file.url}}" type="audio/mpeg">
@@ -60,8 +81,8 @@
 </table>
 {% endif %}
 <p align="center">
-<a href="http://bidhanbaray.pythonanywhere.com/patient_view/logout">Logout</a><br>
-<a href="http://bidhanbaray.pythonanywhere.com/">Home</a>
+<!--<a href="http://bidhanbaray.pythonanywhere.com/patient_view/logout">Logout</a><br>-->
+<!--<a href="http://bidhanbaray.pythonanywhere.com/">Home</a>-->
 </p>
 
 </body>
